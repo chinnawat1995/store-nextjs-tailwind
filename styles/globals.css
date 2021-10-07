@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Overlock';
+    font-weight: 500;
+    src: url('/fonts/Overlock-Regular.woff') format('woff');
+  }
+}
+
+@layer components {
+  :root {
+    --swiper-theme-color: #eb8f73 !important;
+  }
+
+  body {
+    @apply font-overlock;
+  }
+
+  .header-banner-item-img {
+    @apply w-full h-full object-cover object-top;
+  }
+
+  .brand-slide-item-image {
+    @apply opacity-60 hover:opacity-100 transition duration-300 ease-in-out;
+  }
+
+  .truncate-custom {
+    @apply overflow-hidden overflow-ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
