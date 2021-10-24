@@ -25,7 +25,7 @@ export default function Login() {
 
   const submit = async (data) => {
     const { error } = await signIn('credentials', { redirect: false, ...data })
-    console.log({ error_message: error })
+
     if (error) {
       setErrorMessage(true)
     } else {

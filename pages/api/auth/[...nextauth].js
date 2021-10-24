@@ -19,7 +19,7 @@ export default NextAuth({
             password: credentials.password
           })
 
-          return data?.token
+          return { token: data?.token, name: credentials.username }
         } catch ({ response }) {
           const { data } = response
 
@@ -31,13 +31,14 @@ export default NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.accessToken = user
+        token.accessToken = user.token
       }
 
       return token
     },
     async session({ session, token }) {
-      session.accessToken = token.accessToken
+      session.user.token = token.accessToken
+
       return session
     }
   },

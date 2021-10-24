@@ -1,0 +1,8 @@
+const CartActionTypes = {
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVE_ITEM: 'REMOVE_ITEM',
+  INCREASE_QUALITY: 'INCREASE_QUALITY',
+  DECREASE_QUALITY: 'DECREASE_QUALITY'
+}
+
+export default CartActionTypes
