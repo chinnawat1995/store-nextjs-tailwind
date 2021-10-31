@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 
-const TouchSpin = ({ handleNumberUp, handleNumberDown, quality }) => {
+const TouchSpin = ({ handleNumberUp, handleNumberDown, quantity }) => {
   return (
     <div className="flex gap-2 items-center">
       <button
-        onClick={handleNumberUp}
+        onClick={handleNumberDown}
         type="button"
         className="p-2 rounded-full border border-gray-400 self-baseline">
         <svg
@@ -16,9 +16,9 @@ const TouchSpin = ({ handleNumberUp, handleNumberDown, quality }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
         </svg>
       </button>
-      <div className="">{quality}</div>
+      <div className="">{quantity}</div>
       <button
-        onClick={handleNumberDown}
+        onClick={handleNumberUp}
         type="button"
         className="p-2 rounded-full border border-gray-400 self-baseline">
         <svg
@@ -37,7 +37,7 @@ const TouchSpin = ({ handleNumberUp, handleNumberDown, quality }) => {
 TouchSpin.propTypes = {
   handleNumberUp: PropTypes.func,
   handleNumberDown: PropTypes.func,
-  quality: PropTypes.number.isRequired
+  quantity: PropTypes.number.isRequired
 }
 
 export default TouchSpin

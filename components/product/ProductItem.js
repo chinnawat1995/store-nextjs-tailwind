@@ -3,9 +3,13 @@ import RatingList from '@/components/rating/RatingList'
 
 const ProductItem = ({ product }) => {
   return (
-    <a className="p-1">
+    <a className="p-1" href={`/products/${product.id}`}>
       <div className="h-96 flex justify-center overflow-hidden">
-        <img className="self-center w-10/12" src={product.image} alt={product.title} />
+        <img
+          className="self-center w-10/12 transform transition duration-500 ease-in-out hover:scale-125"
+          src={product.image}
+          alt={product.title}
+        />
       </div>
       <div className="mt-6">
         <div className="h-14 truncate-custom">
@@ -15,7 +19,7 @@ const ProductItem = ({ product }) => {
           <RatingList score={product.rating.rate} />
         </div>
         <div>
-          <span className="text-light-orange text-lg font-bold">฿{product.price}</span>
+          <span className="text-light-orange text-lg font-bold">{`$${product.price}`}</span>
         </div>
       </div>
     </a>

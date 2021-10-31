@@ -2,6 +2,7 @@ import thunk from 'redux-thunk'
 import rootReducer from '@/redux/rootReducer'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createLogger } from 'redux-logger'
+import { persistStore } from 'redux-persist'
 
 const logger = createLogger()
 
@@ -15,4 +16,6 @@ const composeEnhancers =
 // create a makeStore function
 const store = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(...middleware)))
 
-export default store
+const persister = persistStore(store)
+
+export { store, persister }

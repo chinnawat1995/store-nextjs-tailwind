@@ -1,13 +1,13 @@
 import { useSession } from 'next-auth/react'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+  const cartQuantity = useSelector((state) => state?.cart.length)
   const session = useSession()
 
   const isLogin = () => {
     let text = (
-      <a
-        href="/login"
-        className="py-1 text-lg hover:text-light-orange font-bold cursor-pointer">
+      <a href="/login" className="py-1 text-lg hover:text-light-orange font-bold cursor-pointer">
         Sign In
       </a>
     )
@@ -43,16 +43,16 @@ const Header = () => {
         </div>
         <div className="flex space-x-3">
           <div className="py-5">
-            <a className="text-lg tracking-wider">HOME</a>
+            <a href='/' className="text-lg tracking-wider">HOME</a>
           </div>
           <div className="py-5 transition ease-in-out hover:scale-50">
-            <a className="text-lg tracking-wider">CATEGORY</a>
+            <a href="/products" className="text-lg tracking-wider">PRODUCT</a>
           </div>
           <div className="py-5">
-            <a href="/carts">
+            <a className="flex" href="/carts">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-lg"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -63,6 +63,7 @@ const Header = () => {
                   d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                 />
               </svg>
+              {cartQuantity > 0 && <span className="w-2 h-2 rounded-full bg-red-500"></span>}
             </a>
           </div>
         </div>
